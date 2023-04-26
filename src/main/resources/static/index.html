@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample</title>
+</head>
+
+<body>
+    <h1>Sample</h1>
+    <div id="list">
+
+    </div>
+    <button id="btn">조회하기</button>
+    <script>
+        async function list() {
+            let response = await fetch("http://localhost:8080/posts/list");
+            let data = await response.json();
+
+            let mapData = data.map(post => '<li>' + post.title + '</li>').join('')
+
+            document.getElementById("list").innerHTML = '<ul>' + mapData + '</ul>';
+        }
+        document.getElementById("btn").addEventListener("click", list);
+
+    </script>
+</body>
+
+</html>
