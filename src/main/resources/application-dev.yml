@@ -1,0 +1,17 @@
+server:
+  port: 9090
+spring:
+  datasource:
+    url: jdbc:mariadb://192.168.1.253:3306/testdb
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: matthew
+    password: wngudehs
+  jpa:
+    database-platform: org.hibernate.dialect.mariadb53dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        show-sql: true
+        format-sql: true
+    hibernate:
+      ddl-auto: create-drop
