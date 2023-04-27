@@ -5,7 +5,7 @@ spring:
     url: jdbc:postgresql://192.168.1.253/postgres
     driver-class-name: org.postgresql.Driver
     username: postgres
-    password: wngudehs
+    password: 
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:

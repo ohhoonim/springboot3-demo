@@ -5,7 +5,7 @@ spring:
     url: jdbc:mariadb://192.168.1.253:3306/testdb
     driver-class-name: org.mariadb.jdbc.Driver
     username: matthew
-    password: wngudehs
+    password: 
   jpa:
     database-platform: org.hibernate.dialect.mariadb53dialect
     properties:
@@ -15,3 +15,6 @@ spring:
         format-sql: true
     hibernate:
       ddl-auto: create-drop
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: trace
