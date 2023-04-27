@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import dev.ohhoonim.demo.mapper.PostMapper;
 import dev.ohhoonim.demo.model.Post;
 import dev.ohhoonim.demo.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -28,5 +29,10 @@ public class PostController {
         return new Post(UUID.randomUUID(),"title1", "contents1", "", LocalDateTime.now());
     }
 
+    private final PostMapper postMapper;
+    @GetMapping("/listByMapper")
+    public List<Post> listByMapper() {
+        return postMapper.listPost();
+    }
     
 }
