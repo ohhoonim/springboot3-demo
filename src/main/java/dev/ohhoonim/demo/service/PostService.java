@@ -1,6 +1,8 @@
 package dev.ohhoonim.demo.service;
 
 import java.util.List;
+import java.util.UUID;
+import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +20,7 @@ public class PostService {
 
     private final PostRepository postRepository;
 
-    public List<Post> postList(int size, int page) {
+    public List<Post> postList(String title) {
         // 1. 검색 : example 사용
         // Example<Post> example = Example.of(Post.builder().title("title").build(),
         //         ExampleMatcher.matching().withStringMatcher(StringMatcher.CONTAINING));
@@ -31,7 +33,12 @@ public class PostService {
         // return postRepository.findByTitleContainingOrderByTitleDesc("title");
 
         // 3. paging
-        return postRepository.findAll(Pageable.ofSize(size).withPage(page)).toList();
+        return postRepository.findByTitleContainsOrderByTitleDesc(title);
 
+    }
+
+    public Post post(String postId) throws NotFoundException {
+        return postRepository.findById(UUID.fromString(postId))
+                .orElseThrow(() -> new NotFoundException("not found post"));
     }
 }

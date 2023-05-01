@@ -1,7 +1,9 @@
 spring:
-  application:
-    name: demo
-  profiles:
-    active: local
+    application:
+        name: demo
+    profiles:
+        active: local 
 
-
+jasypt:
+    encryptor:
+        bean: jasyptStringEncryptor

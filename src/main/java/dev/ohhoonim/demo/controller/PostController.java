@@ -3,6 +3,7 @@ package dev.ohhoonim.demo.controller;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
+import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,21 +20,16 @@ import lombok.RequiredArgsConstructor;
 public class PostController {
 
     private final PostService postService;
-    
+
     @GetMapping("/list")
-    public List<Post> postList(@RequestParam int page, @RequestParam int size) {
-        return postService.postList(size, page);
+    public List<Post> postList( @RequestParam String title) {
+        return postService.postList(title);
     }
 
     @GetMapping("/{postId}")
-    public Post postDetail(@PathVariable String postId){
-        return new Post(UUID.randomUUID(),"title1", "contents1", "", LocalDateTime.now());
+    public Post postDetail(@PathVariable String postId) throws NotFoundException {
+        return postService.post(postId);
+
     }
 
-    private final PostMapper postMapper;
-    @GetMapping("/listByMapper")
-    public List<Post> listByMapper() {
-        return postMapper.listPost();
-    }
-    
 }

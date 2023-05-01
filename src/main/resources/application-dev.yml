@@ -1,16 +1,15 @@
 spring:
-  datasource:
-    url: jdbc:mariadb://192.168.1.253:3306/testdb
-    driver-class-name: org.mariadb.jdbc.Driver
-    username: matthew
-    password: 
-  jpa:
-    database-platform: org.hibernate.dialect.Mariadb103Dialect
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
-        show-sql: true
-        format-sql: true
-    hibernate:
-      ddl-auto: create-drop
-
+    datasource:
+        url: jdbc:mariadb://192.168.1.253:3306/testdb
+        driver-class-name: org.mariadb.jdbc.Driver
+        username: matthew
+        password: ENC(zL49/IeLqnnbr4IU6yHyl5lYg8wLgxvH)
+    jpa:
+        database-platform: org.hibernate.dialect.Mariadb103Dialect
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.H2Dialect
+                show-sql: true
+                format-sql: true
+        hibernate:
+            ddl-auto: create-drop

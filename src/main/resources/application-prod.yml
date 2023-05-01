@@ -1,16 +1,16 @@
 server:
-  port: 9099
+    port: 9099
 spring:
-  datasource:
-    url: jdbc:postgresql://192.168.1.253/postgres
-    driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: 
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    properties:
-      hibernate:
-        show-sql: true
-        format-sql: true
-    hibernate:
-      ddl-auto: create-drop
+    datasource:
+        url: jdbc:postgresql://192.168.1.253/postgres
+        driver-class-name: org.postgresql.Driver
+        username: postgres
+        password: 
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        properties:
+            hibernate:
+                show-sql: true
+                format-sql: true
+        hibernate:
+            ddl-auto: create-drop

@@ -7,6 +7,6 @@ import dev.ohhoonim.demo.model.Post;
 
 public interface PostRepository extends JpaRepository<Post, UUID> {
 
-    List<Post> findByTitleContainingOrderByTitleDesc(String title);
+    List<Post> findByTitleContainsOrderByTitleDesc(String title);
 
 }
