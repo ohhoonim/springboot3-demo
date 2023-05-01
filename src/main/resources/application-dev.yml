@@ -5,10 +5,9 @@ spring:
         username: matthew
         password: ENC(zL49/IeLqnnbr4IU6yHyl5lYg8wLgxvH)
     jpa:
-        database-platform: org.hibernate.dialect.Mariadb103Dialect
+        database-platform: org.hibernate.dialect.MySQL5Dialect
         properties:
             hibernate:
-                dialect: org.hibernate.dialect.H2Dialect
                 show-sql: true
                 format-sql: true
         hibernate:

@@ -2,7 +2,7 @@ spring:
     application:
         name: demo
     profiles:
-        active: local 
+        active: dev 
 
 jasypt:
     encryptor:

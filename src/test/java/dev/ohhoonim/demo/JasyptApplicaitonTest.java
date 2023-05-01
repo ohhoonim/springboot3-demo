@@ -16,7 +16,7 @@ public class JasyptApplicaitonTest {
 
     @Test
     void jasypt() {
-        String value = "wngudehs"; 
+        String value = ""; 
         String result = jasyptEncoding(value);
         log.debug("---{}---", result);
 
