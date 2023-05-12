@@ -17,23 +17,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-<<<<<<< HEAD
-    /*
-     * 로그일 할 때 사용한다. 
-     * authenticationManager.authenticate(
-     *    new UsernamePasswordAuthenticationToken(
-     *       // id, password 
-     *    ) 
-     * )
-     */
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration config)
-            throws Exception {
-        return config.getAuthenticationManager();
-    }
-
-    @Bean
-=======
     private final UserRepository userRepository;
     
     @Bean
@@ -50,7 +33,6 @@ public class ApplicationConfig {
     }
    
     @Bean
->>>>>>> security-init
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService());
@@ -58,25 +40,9 @@ public class ApplicationConfig {
         return authProvider;
     }
 
-<<<<<<< HEAD
-    private final UserRepository userRepository;
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return username -> {
-            return userRepository.findByEmail(username)
-                    .orElseThrow(() -> new UsernameNotFoundException("사용자를 찾을 수 없습니다."));
-        };
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-=======
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config)
             throws Exception {
         return config.getAuthenticationManager();
->>>>>>> security-init
     }
 }
