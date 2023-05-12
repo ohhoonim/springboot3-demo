@@ -21,19 +21,10 @@ public class PostController {
     private final PostService postService;
     
     @GetMapping("/list")
-    public List<Post> postList(@RequestParam int page, @RequestParam int size) {
-        return postService.postList(size, page);
+    public List<Post> postList() {
+        return postService.postList();
     }
 
-    @GetMapping("/{postId}")
-    public Post postDetail(@PathVariable String postId){
-        return new Post(UUID.randomUUID(),"title1", "contents1", "", LocalDateTime.now());
-    }
-
-    private final PostMapper postMapper;
-    @GetMapping("/listByMapper")
-    public List<Post> listByMapper() {
-        return postMapper.listPost();
-    }
+    
     
 }

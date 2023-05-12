@@ -1,20 +1,17 @@
 server:
-  port: 9090
+  port: 8080 
 spring:
   datasource:
-    url: jdbc:mariadb://192.168.1.253:3306/testdb
+    url: ENC(GFckA1OjnukCpZC6bDftDSUH8L4aUduRfukh/TIJ+xvXCWg9mvxFCnUE028Gn2P0Q9oeDcj0rik=) 
     driver-class-name: org.mariadb.jdbc.Driver
     username: matthew
-    password: 
+    password: ENC(2CTYlgRXmYmlDbJkE9dMV9JQnEAnxNWL)
   jpa:
-    database-platform: org.hibernate.dialect.mariadb53dialect
+    database-platform: org.hibernate.dialect.MySQL5Dialect
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
         show-sql: true
         format-sql: true
     hibernate:
       ddl-auto: create-drop
-logging:
-  level:
-    org.hibernate.type.descriptor.sql: trace
+
