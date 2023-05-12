@@ -8,10 +8,17 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class JasyptConfig {
+<<<<<<< HEAD
 
     @Bean("jasyptStringEncryptor")
     public StringEncryptor stringEncryptor() {
         String key = "452948404D635166546A576E5A7234753778214125442A462D4A614E64526755";
+=======
+    @Bean("jasyptStringEncryptor")
+    public StringEncryptor stringEncryptor() {
+        String key = "4B6250655368566D597133743677397A244326462948404D635166546A576E5A";
+        
+>>>>>>> security-init
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
         config.setPassword(key); // encrypt key

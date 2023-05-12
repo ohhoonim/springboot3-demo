@@ -15,6 +15,9 @@ public class AuthService {
        authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword())
        ) ;
+// 정상로직...
+
+
         return user;
     }
     

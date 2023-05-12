@@ -22,14 +22,10 @@ public class PostController {
     private final PostService postService;
 
     @GetMapping("/list")
-    public List<Post> postList( @RequestParam String title) {
-        return postService.postList(title);
+    public List<Post> postList() {
+        return postService.postList();
     }
 
-    @GetMapping("/{postId}")
-    public Post postDetail(@PathVariable String postId) throws NotFoundException {
-        return postService.post(postId);
-
-    }
-
+    
+    
 }

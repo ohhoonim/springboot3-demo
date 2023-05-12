@@ -19,5 +19,10 @@ public class AuthController {
     public ResponseEntity<User> authenticate(@RequestBody User user) {
 
         return ResponseEntity.ok(authService.authenticate(user));
+
+        // authority : 회원가입 , 인가 
+        // authentication : 로그인 , 인증 
+        // auth 
+
     }
 }

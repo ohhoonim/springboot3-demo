@@ -1,8 +1,8 @@
 spring:
-    application:
-        name: demo
-    profiles:
-        active: dev 
+  application:
+    name: demo
+  profiles:
+    active: dev
 
 jasypt:
     encryptor:

@@ -14,28 +14,31 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-public class User implements UserDetails{
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID userId;
+
     private String name;
-    private String password;
     @Column(unique = true)
-    private String email;
+    private String email; // username
+    private String password;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
     }
+
     @Override
     public String getUsername() {
-       return this.getEmail(); 
+        return getEmail();
     }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -52,4 +55,6 @@ public class User implements UserDetails{
     public boolean isEnabled() {
         return true;
     }
+
+
 }
