@@ -3,6 +3,8 @@ package dev.ohhoonim.demo.service;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
+import dev.ohhoonim.demo.config.service.JwtService;
+import dev.ohhoonim.demo.controller.dto.AuthResponse;
 import dev.ohhoonim.demo.model.User;
 import lombok.RequiredArgsConstructor;
 
@@ -10,15 +12,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthService {
     private final AuthenticationManager authenticationManager;
-
-    public User authenticate(User user) {
+    private final JwtService jwtService;
+    
+    // public User authenticate(User user) {
+    public AuthResponse authenticate(User user) {
        authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword())
        ) ;
-// 정상로직...
-
-
-        return user;
+       return new AuthResponse(jwtService.generateToken(user));
     }
     
 }
