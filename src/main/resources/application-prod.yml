@@ -13,4 +13,4 @@ spring:
                 show-sql: true
                 format-sql: true
         hibernate:
-            ddl-auto: create-drop
+            ddl-auto: validate 

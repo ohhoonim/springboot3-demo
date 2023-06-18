@@ -7,11 +7,11 @@ spring:
     username: matthew
     password: ENC(2CTYlgRXmYmlDbJkE9dMV9JQnEAnxNWL)
   jpa:
-    database-platform: org.hibernate.dialect.MySQL5Dialect
+    database-platform: org.hibernate.dialect.MariaDB103Dialect
     properties:
       hibernate:
         show-sql: true
         format-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none 
 
