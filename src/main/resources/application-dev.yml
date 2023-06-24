@@ -13,5 +13,20 @@ spring:
         show-sql: true
         format-sql: true
     hibernate:
-      ddl-auto: none 
-
+      ddl-auto: validate 
+  sql:
+    init:
+      mode: never
+      platform: mariadb
+mybatis:
+    mapper-locations: classpath:mybatis/mapper/mariadb/**/**.xml
+    type-handlers-package: dev.ohhoonim.demo.mapper.typehandler
+    type-aliases-package: dev.ohhoonim.demo.model
+    configuration:
+        map-underscore-to-camel-case: true
+        default-statement-timeout: 30
+        default-fetch-size: 100
+logging:
+    level:
+        root: INFO
+        dev.ohhoonim.demo.mapper: TRACE

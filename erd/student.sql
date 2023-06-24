@@ -1,3 +1,4 @@
+DROP TABLE  if exists student;
 CREATE TABLE `student` (
   `student_id` bigint(20) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
@@ -5,7 +6,7 @@ CREATE TABLE `student` (
   PRIMARY KEY (`student_id`)
 );
 
-
+DROP TABLE  if exists score;
 CREATE TABLE `score` (
   `score_id` bigint(20) NOT NULL,
   `subject` varchar(100) DEFAULT NULL,
