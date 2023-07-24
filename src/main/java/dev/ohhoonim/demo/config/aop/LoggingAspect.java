@@ -28,7 +28,8 @@ public class LoggingAspect {
     }
 
     @Before("postMapping()")
-    public void beforePostMapping() {
+    public void beforePostMapping(JoinPoint joinPoint) {
+        log.debug("{}", joinPoint.getArgs());
         log.debug("{}", "before post mapping...");
     }
 
