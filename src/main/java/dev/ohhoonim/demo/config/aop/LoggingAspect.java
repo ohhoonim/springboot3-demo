@@ -29,12 +29,12 @@ public class LoggingAspect {
 
     @Before("postMapping()")
     public void beforePostMapping() {
-        log.debug("{}", "before post mapping...")
+        log.debug("{}", "before post mapping...");
     }
 
     @After("serviceExecution()")
     public void afterService() {
-        log.debug("{}", "after post mapping...")
+        log.debug("{}", "after post mapping...");
     }
 
     @AfterReturning(pointcut = "serviceExecution()", returning = "result")
