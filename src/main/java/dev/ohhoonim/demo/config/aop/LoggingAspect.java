@@ -9,6 +9,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,30 +18,28 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class LoggingAspect {
 
-    @Pointcut("execution(* dev.ohhoonim.demo.service..*.*Service.*(..))")
+    @Pointcut("execution(* dev.ohhoonim.demo..*Service.*(..))")
     public void serviceExecution() {
-        log.debug("{}", "service method log...");
     }
 
     @Pointcut("@annotation(org.springframework.web.bind.annotation.PostMapping)")
     public void postMapping() {
-        log.debug("{}", "post mapping log...");
+        
     }
 
     @Before("postMapping()")
     public void beforePostMapping(JoinPoint joinPoint) {
-        log.debug("{}", joinPoint.getArgs());
-        log.debug("{}", "before post mapping...");
+        // here 
     }
 
     @After("serviceExecution()")
     public void afterService() {
-        log.debug("{}", "after post mapping...");
+        // here 
     }
 
     @AfterReturning(pointcut = "serviceExecution()", returning = "result")
     public void afterReturningService(JoinPoint joinPoint, Object result) {
-
+        // here
     }
 
     @Around("serviceExecution()")
@@ -50,6 +49,6 @@ public class LoggingAspect {
 
     @AfterThrowing(pointcut = "serviceExecution()", throwing = "ex")
     public void afterThrowingService(JoinPoint joinPoint, Throwable ex) throws Throwable {
-
+        // here
     }
 }

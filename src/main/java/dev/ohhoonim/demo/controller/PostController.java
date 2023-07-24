@@ -20,6 +20,9 @@ public class PostController {
         return postService.postList();
     }
 
-    
+    @GetMapping("/errorList")
+    public void errorList() throws Exception {
+        throw new Exception("임의로 exception 발생");
+    } 
     
 }
