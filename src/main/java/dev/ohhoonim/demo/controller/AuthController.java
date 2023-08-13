@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import dev.ohhoonim.demo.controller.dto.AuthRequest;
 import dev.ohhoonim.demo.controller.dto.AuthResponse;
-import dev.ohhoonim.demo.model.User;
+import dev.ohhoonim.demo.model.secondary.User;
 import dev.ohhoonim.demo.service.AuthService;
 import lombok.RequiredArgsConstructor;
 

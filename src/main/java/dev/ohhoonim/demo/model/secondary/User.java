@@ -1,4 +1,4 @@
-package dev.ohhoonim.demo.model;
+package dev.ohhoonim.demo.model.secondary;
 
 import java.util.Collection;
 import java.util.UUID;
@@ -9,20 +9,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name="users", schema = "public")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="user_id")
+    private Long userId;
 
     private String name;
     @Column(unique = true)

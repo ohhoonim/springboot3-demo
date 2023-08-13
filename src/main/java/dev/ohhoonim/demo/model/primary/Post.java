@@ -1,4 +1,4 @@
-package dev.ohhoonim.demo.model;
+package dev.ohhoonim.demo.model.primary;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
