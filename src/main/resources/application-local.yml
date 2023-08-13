@@ -2,31 +2,26 @@ server:
   port: 8080
 spring:
   datasource:
-    url: jdbc:mariadb://192.168.1.253:3306/localdb
-    driver-class-name: org.mariadb.jdbc.Driver
-    username: matthew
-    password: ENC(2CTYlgRXmYmlDbJkE9dMV9JQnEAnxNWL)
+    hikari:
+      primary:
+        driver-class-name: org.mariadb.jdbc.Driver
+        jdbc-url: jdbc:mariadb://192.168.1.253:3306/localdb
+        username: matthew
+        password: ENC(2CTYlgRXmYmlDbJkE9dMV9JQnEAnxNWL)
+      secondary:
+        driver-class-name: org.postgresql.Driver
+        jdbc-url: jdbc:postgresql://192.168.1.253/postgres
+        username: postgres 
+        password: ENC(cMCFuBMiyXpJPHQj9P3PFdhcP4UCV/hR)
   jpa:
-    database-platform: org.hibernate.dialect.MariaDB103Dialect
+    show-sql: true
     properties:
       hibernate:
-        show-sql: true
-        format-sql: true
-    hibernate:
-      ddl-auto: create
-    defer-datasource-initialization: true
-  sql:
-    init: 
-      mode: always
-      platform: mariadb
-mybatis:
-  mapper-locations: classpath:mybatis/mapper/mariadb/**/**.xml
-  type-handlers-package: dev.ohhoonim.demo.mapper.typehandler
-  type-aliases-package: dev.ohhoonim.demo.model
-  configuration:
-    map-underscore-to-camel-case: true
-    default-statement-timeout: 30
-    default-fetch-size: 100
+        format_sql: true
+        use_sql_comments: true
+        query:
+          in_clause_parameter_padding: true
+    open-in-view: false
 
 logging:
   level:

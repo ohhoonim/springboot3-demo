@@ -1,12 +1,12 @@
-package dev.ohhoonim.demo.repository;
+package dev.ohhoonim.demo.repository.primary;
 
 import java.util.List;
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import dev.ohhoonim.demo.controller.dto.SubjectScoreResponse;
-import dev.ohhoonim.demo.model.QScore;
-import dev.ohhoonim.demo.model.QStudent;
+import dev.ohhoonim.demo.model.primary.QScore;
+import dev.ohhoonim.demo.model.primary.QStudent;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

@@ -5,7 +5,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.stereotype.Service;
 import dev.ohhoonim.demo.config.service.JwtService;
 import dev.ohhoonim.demo.controller.dto.AuthResponse;
-import dev.ohhoonim.demo.model.User;
+import dev.ohhoonim.demo.model.secondary.User;
 import lombok.RequiredArgsConstructor;
 
 @Service

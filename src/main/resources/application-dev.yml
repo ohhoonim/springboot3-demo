@@ -1,32 +1,33 @@
 server:
-  port: 8080 
+  port: 8080
 spring:
   datasource:
-    url: ENC(GFckA1OjnukCpZC6bDftDSUH8L4aUduRfukh/TIJ+xvXCWg9mvxFCnUE028Gn2P0Q9oeDcj0rik=) 
-    driver-class-name: org.mariadb.jdbc.Driver
-    username: matthew
-    password: ENC(2CTYlgRXmYmlDbJkE9dMV9JQnEAnxNWL)
+    hikari:
+      primary:
+        driver-class-name: org.mariadb.jdbc.Driver
+        jdbc-url: jdbc:mariadb://192.168.1.253:3306/localdb
+        username: matthew
+        password: ENC(2CTYlgRXmYmlDbJkE9dMV9JQnEAnxNWL)
+      secondary:
+        driver-class-name: org.postgresql.Driver
+        jdbc-url: jdbc:postgresql://192.168.1.253/postgres
+        username: matthew
+        password: ENC(2CTYlgRXmYmlDbJkE9dMV9JQnEAnxNWL)
   jpa:
-    database-platform: org.hibernate.dialect.MariaDB103Dialect
+    show-sql: true
     properties:
       hibernate:
-        show-sql: true
-        format-sql: true
-    hibernate:
-      ddl-auto: validate 
-  sql:
-    init:
-      mode: never
-      platform: mariadb
-mybatis:
-    mapper-locations: classpath:mybatis/mapper/mariadb/**/**.xml
-    type-handlers-package: dev.ohhoonim.demo.mapper.typehandler
-    type-aliases-package: dev.ohhoonim.demo.model
-    configuration:
-        map-underscore-to-camel-case: true
-        default-statement-timeout: 30
-        default-fetch-size: 100
+        format_sql: true
+        use_sql_comments: true
+        query:
+          in_clause_parameter_padding: true
+    open-in-view: false
+
 logging:
-    level:
-        root: INFO
-        dev.ohhoonim.demo.mapper: TRACE
+  level:
+    root: INFO
+    dev.ohhoonim.demo.mapper: TRACE
+
+file:
+  upload:
+    rootpath: /home/upload

@@ -1,4 +1,4 @@
-package dev.ohhoonim.demo.model;
+package dev.ohhoonim.demo.model.primary;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
