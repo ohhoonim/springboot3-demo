@@ -1,18 +1,18 @@
 package dev.ohhoonim.demo.service;
 
 import java.io.IOException;
+import java.util.List;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import com.fasterxml.jackson.core.exc.StreamWriteException;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.net.HttpHeaders;
 import dev.ohhoonim.demo.config.service.JwtService;
-import dev.ohhoonim.demo.controller.dto.AuthRequest;
 import dev.ohhoonim.demo.controller.dto.AuthResponse;
+import dev.ohhoonim.demo.model.secondary.Tokens;
+import dev.ohhoonim.demo.model.secondary.TokenType;
 import dev.ohhoonim.demo.model.secondary.User;
+import dev.ohhoonim.demo.repository.secondary.TokenRepository;
 import dev.ohhoonim.demo.repository.secondary.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -24,13 +24,38 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
     private final UserRepository userRepository;
+    private final TokenRepository tokenRepository;
 
     // public User authenticate(User user) {
     public AuthResponse authenticate(User user) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
-        return new AuthResponse(jwtService.generateToken(user),
-                jwtService.generateRefreshToken(user));
+        String jwtToken = jwtService.generateToken(user);
+        String refreshToken = jwtService.generateRefreshToken(user);
+        revokeAllUserTokens(user);
+        saveToken(user, jwtToken);
+        return new AuthResponse( jwtToken, refreshToken);
+    }
+
+    private void revokeAllUserTokens(User user) {
+        List<Tokens> validTokens = tokenRepository.findAllValidTokenByUserId(user.getEmail());
+        if (!validTokens.isEmpty()) {
+            validTokens.forEach( t-> {
+                t.setExpired(true);
+                t.setRevoked(true);
+            });
+            tokenRepository.saveAll(validTokens);
+        }
+    }
+    private void saveToken (User user, String jwtToken) {
+        Tokens token = Tokens.builder()
+        .token(jwtToken)
+        .tokenType(TokenType.BEARER)
+        .expired(false)
+        .revoked(false)
+        .userName(user.getUsername())
+        .build();
+        tokenRepository.save(token);
     }
 
     public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {

@@ -46,7 +46,7 @@ public class PrimaryDatasourceConfig {
             EntityManagerFactoryBuilder builder,
             @Qualifier("primaryDatasource") DataSource primaryDatasource) {
         return builder.dataSource(primaryDatasource).packages("dev.ohhoonim.demo.model.primary")
-                .persistenceUnit("hikari").properties(jpaProperties()).build();
+                .persistenceUnit("primaryEntityManager").properties(jpaProperties()).build();
     }
 
     private Map<String, Object> jpaProperties() {
