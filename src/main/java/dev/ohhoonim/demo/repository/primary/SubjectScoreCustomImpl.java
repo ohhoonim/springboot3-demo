@@ -1,6 +1,7 @@
 package dev.ohhoonim.demo.repository.primary;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Qualifier;
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -9,10 +10,13 @@ import dev.ohhoonim.demo.model.primary.QScore;
 import dev.ohhoonim.demo.model.primary.QStudent;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 public class SubjectScoreCustomImpl implements SubjectScoreCustom {
 
     private final JPAQueryFactory queryFactory;
+
+    public SubjectScoreCustomImpl(@Qualifier("primaryJpaQueryFactory") JPAQueryFactory queryFactory) {
+        this.queryFactory = queryFactory;
+    }
 
     public List<SubjectScoreResponse> findScoresByStudent(Long studentId) {
 
